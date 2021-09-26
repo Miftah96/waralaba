@@ -10,19 +10,18 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+   
     <!-- Datatable -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
-
+    <link href="{{ URL::asset('source/vendors/datatables.net-dt/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('source/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+    
 </head>
 <body>
     <div id="app">
@@ -86,13 +85,20 @@
         </main>
     </div>
 
-    <!-- jQuery -->
-    <script src="//code.jquery.com/jquery.js"></script>
-    <!-- DataTables -->
-    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    <!-- Bootstrap JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <!-- App scripts -->
-    @stack('scripts')
 </body>
+<script src="{{ URL::asset('source/vendors/jquery/dist/jquery.min.js') }}"></script>
+
+<!-- Data Table JavaScript -->
+<script src="{{ URL::asset('source/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-dt/js/dataTables.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ URL::asset('source/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ URL::asset('source/dist/js/dataTables-data.js') }}"></script>
+
+@stack('scripts')
 </html>

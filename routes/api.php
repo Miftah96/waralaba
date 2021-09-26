@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['as' => 'api.'], function () {
+    Route::apiResource('member', 'Api\MemberController');
+    Route::get('member/list','Api\MemberController@getList')->name('member.getList');
+});
+// Datatable 

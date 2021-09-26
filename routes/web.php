@@ -25,9 +25,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('member', 'MemberController');
+    Route::resource('member', 'Web\MemberController');
 
     // Datatable
-    Route::get('member/list','MemberController@getList')->name('member.getList');
-
+    
 });
+Route::get('member/list','Web\MemberController@getList')->name('member.datatables');

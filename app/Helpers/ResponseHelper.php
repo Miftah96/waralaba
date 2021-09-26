@@ -22,4 +22,16 @@ class ResponseHelper
 
         return response($response, 404);
     }
+
+    public static function unprocessableResponse($message, $code = 400)
+    {
+        $response = [
+            'url' => URL::full(),
+            'method' => Request::getMethod(),
+            'code' => $code,
+            'message' => $message
+        ];
+
+        return response($response, $code);
+    }
 }

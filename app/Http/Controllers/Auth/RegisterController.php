@@ -29,7 +29,9 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = "{{ route('member.index') }}";
+
+    // protected $redirectTo = "{{ route('member.index') }}";
 
     /**
      * Create a new controller instance.

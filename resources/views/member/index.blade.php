@@ -19,35 +19,47 @@
         </div>
     </div>
     <div class="row">
-        <table lass="table table-bordered" id="users-table">
+        <a href="{{ route('member.create') }}">Add Member</a>
+        <table class="table table-bordered">
             <thead>
-                <th>No KTP</th>
-                <th>Nama</th>
-                <th>Phone</th>
-                <th>Tgl. Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>Tanggal Daftar</th>
+                <tr>
+                    <th>No KTP</th>
+                    <th>Nama</th>
+                    <th>Phone</th>
+                    <th>Tgl. Lahir</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tanggal Daftar</th> 
+                    <th>Action</th>
+                </tr>
             </thead>
+            <tbody>
+                @foreach($query as $row)
+                    <tr>
+                        <td>{{ $row->id_card_number }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->phone }}</td>
+                        <td>{{ $row->date_of_birth }}</td>
+                        <td>{{ $row->gender }}</td>
+                        <td>{{ $row->created_at }}</td>
+                        <td>
+                            <a href="{{ route('member.show', $row->id) }}">View</a>
+                            <a href="{{ route('member.edit', $row->id) }}">Edit</a>
+                            <form method="POST" action="{{ route('member.destroy', $row->id) }}">
+                               @csrf
+                                @method('DELETE')
+            
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
         </table>
     </div>
 </div>
 @endsection
 
 @push('scripts')
-<script>
-$(function() {
-    $('#users-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{!! route('member.getList') !!}',
-        columns: [
-            { data: 'id_card_number', name: 'id_card_number' },
-            { data: 'name', name: 'name' },
-            { data: 'phone', name: 'phone' },
-            { data: 'date_of_birth', name: 'date_of_birth' }
-            { data: 'created_at', name: 'created_at' },
-        ]
-    });
-});
+<script type="text/javascript">
 </script>
 @endpush
